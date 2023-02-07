@@ -1,6 +1,6 @@
+import 'package:fds/pages/registerpage.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
 
 
 
@@ -20,20 +20,17 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return  MaterialApp(
       //badge remove
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: Center(
-          child: Text(
-            'Hello World',
-            style: TextStyle(
-              fontSize: 30,
-              color: Colors.blue,
-            ),
-          )
-        ),
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
       ),
+      home: const  MyHomePage()
+
     );
+
   }
-}
+    
+  }
