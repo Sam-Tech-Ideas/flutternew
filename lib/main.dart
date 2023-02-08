@@ -1,3 +1,4 @@
+import 'package:fds/pages/login.dart';
 import 'package:fds/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 
@@ -27,7 +28,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const  MyHomePage()
+      home: const  LoginPage()
 
     );
 
