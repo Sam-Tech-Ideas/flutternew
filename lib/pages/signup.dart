@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class SignUp extends StatefulWidget {
+  const SignUp({super.key});
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<SignUp> createState() => _SignUpState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _SignUpState extends State<SignUp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
                 width: 300,
                 height: 200,
               ),
-              const Text("Login to Your Account",
+              const Text("Create New Account",
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.bold,
@@ -81,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                   elevation: 0,
                 ),
                 child: const Text(
-                  "Sign in",
+                  "Sign up",
                   style: TextStyle(
                     fontSize: 10,
                   ),
@@ -94,7 +94,7 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
-                    "Don't have an account?",
+                    "Already have an account?",
                     style: TextStyle(
                       fontSize: 10,
                     ),
@@ -102,7 +102,7 @@ class _LoginPageState extends State<LoginPage> {
                   TextButton(
                       onPressed: () {},
                       child: const Text(
-                        "Sign up",
+                        "Sign in",
                       ))
                 ],
               ),
