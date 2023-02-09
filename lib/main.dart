@@ -1,4 +1,5 @@
 import 'package:fds/pages/customer.dart';
+import 'package:fds/pages/main_page.dart';
 import 'package:fds/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 
@@ -23,7 +24,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const CustomerPage(),
+      home: const MainPage(),
     );
   }
 }
