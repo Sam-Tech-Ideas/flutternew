@@ -1,6 +1,6 @@
+import 'package:fds/pages/checkout.dart';
 import 'package:fds/pages/customer.dart';
 import 'package:fds/pages/detailpage.dart';
-import 'package:fds/pages/order.dart';
 import 'package:flutter/material.dart';
 
 import 'cart.dart';
@@ -15,7 +15,7 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List pages = [
     const CustomerPage(),
-    const OrderHistory(),
+    const CheckoutPage(),
     const DetailPage(),
     const CartPage(),
   ];
@@ -50,7 +50,7 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.shopping_cart_checkout_outlined),
             label: 'Orders',
           ),
-           BottomNavigationBarItem(
+          BottomNavigationBarItem(
             icon: Icon(Icons.search_outlined),
             label: 'Search',
           ),
@@ -58,7 +58,6 @@ class _MainPageState extends State<MainPage> {
             icon: Icon(Icons.person),
             label: 'Profile',
           ),
-         
         ],
       ),
     );
