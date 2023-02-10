@@ -1,8 +1,9 @@
 import 'package:fds/pages/customer.dart';
-import 'package:fds/pages/registerpage.dart';
+import 'package:fds/pages/detailpage.dart';
+import 'package:fds/pages/order.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
+
+import 'cart.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -14,33 +15,50 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List pages = [
     const CustomerPage(),
-    const MyHomePage(),
+    const OrderHistory(),
+    const DetailPage(),
+    const CartPage(),
   ];
-  
+
+  int currentIndex = 0;
+
+  void onTap(int index) {
+    setState(() {
+      currentIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
+      body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.amber,
-        selectedItemColor: Colors.black,
-        unselectedItemColor: Colors.red,
+        onTap: onTap,
+        currentIndex: currentIndex,
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
+        selectedItemColor: Colors.red,
+        unselectedItemColor: Colors.black38,
+        elevation: 0,
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
+            icon: Icon(Icons.shopping_cart_checkout_outlined),
             label: 'Orders',
+          ),
+           BottomNavigationBarItem(
+            icon: Icon(Icons.search_outlined),
+            label: 'Search',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Orders',
+            icon: Icon(Icons.person),
+            label: 'Profile',
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart_outlined),
-            label: 'Orders',
-          ),
+         
         ],
       ),
     );

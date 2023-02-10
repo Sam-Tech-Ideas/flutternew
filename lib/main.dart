@@ -1,6 +1,4 @@
-import 'package:fds/pages/customer.dart';
 import 'package:fds/pages/main_page.dart';
-import 'package:fds/pages/registerpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
