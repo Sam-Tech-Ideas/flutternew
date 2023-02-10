@@ -21,8 +21,8 @@ class _MainPageState extends State<MainPage> {
           ),
           
           BottomNavigationBarItem(
-            icon: Icon(Icons.school),
-            label: 'School',
+            icon: Icon(Icons.shopping_cart_outlined),
+            label: 'Orders',
           ),
         ],
       ),
