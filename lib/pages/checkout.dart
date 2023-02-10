@@ -11,9 +11,7 @@ class _CheckoutPageState extends State<CheckoutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      appBar: 
-      AppBar(
+      appBar: AppBar(
         leading: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(
@@ -33,26 +31,56 @@ class _CheckoutPageState extends State<CheckoutPage> {
           ),
         ],
       ),
-    
       body: Column(children: [
         Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              const Text(
-                "Order Summary",
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-              ),
-              ElevatedButton(onPressed: () {}, child: const Text("Add items",
+          padding: const EdgeInsets.all(18.0),
+          child: ClipRRect
+          (
+            borderRadius:  BorderRadius.circular(20),
+             
+            child: Container(
+              decoration: 
+              BoxDecoration(
+                color: Colors.white,
               
-              style: TextStyle(
-                fontSize: 12,
-                color: Colors.white
-              
+                borderRadius: BorderRadius.circular(20),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    
+                    blurRadius: 7,
+                    offset: const Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ), 
+            
+              height: 100,
+              color: Colors.white,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const Text(
+                    "Order Summary",
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.red,
+                      shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                    ),
+                    child: const Text(
+                      "Add items",
+                    ),
+                  ),
+                ],
               ),
-              )),
-            ],
+            ),
           ),
         )
       ]),
