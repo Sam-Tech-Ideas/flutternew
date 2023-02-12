@@ -51,12 +51,18 @@ class _CartPageState extends State<CartPage> {
             const SizedBox(
               height: 20,
             ),
-            const Center(
-              child: Text("Looks like you haven't added anything to your cart yet",
-                  style: TextStyle(
-                    fontSize: 12,
-                    
-                  )),
+            Padding(
+              padding: const EdgeInsets.only(
+                right: 4,
+                left: 4,
+              ),
+              child: const Center(
+                child: Text("Looks like you haven't added anything to your cart yet",
+                    style: TextStyle(
+                      fontSize: 10,
+                      
+                    )),
+              ),
             ),
             
             

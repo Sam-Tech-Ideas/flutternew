@@ -1,6 +1,5 @@
+import 'package:fds/auth/firebase.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -15,7 +14,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
-        elevation: 0, 
+        elevation: 0,
       ),
       body: SafeArea(
         child: Center(
@@ -38,7 +37,22 @@ class _MyHomePageState extends State<MyHomePage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton.icon(
-                  onPressed: () {},
+                  onPressed: () async {
+                    try {
+                      final userDetails = await signIn();
+                      if (mounted) {
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text(
+                          "Signed in with Google ${userDetails.displayName}",
+                        )));
+                      }
+                    } catch (e) {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                        "There was an error signing in with Google",
+                      )));
+                    }
+                  },
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.white,
                     foregroundColor: Colors.black,
@@ -61,7 +75,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 ),
               ),
 
-              SizedBox(
+              const SizedBox(
                 height: 60,
               ),
 
@@ -78,7 +92,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //    shape: RoundedRectangleBorder(
               //      borderRadius: BorderRadius.circular(30),
 
-              SizedBox(
+              const SizedBox(
                 height: 80,
               ),
 

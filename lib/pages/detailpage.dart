@@ -27,7 +27,11 @@ class _DetailPageState extends State<DetailPage> {
           )
         ],
       ),
-      body: SafeArea(
+      body:
+       
+       SafeArea(
+        child: SingleChildScrollView(
+        
         child: Column(
           children: [
             ClipRRect(
@@ -138,6 +142,9 @@ class _DetailPageState extends State<DetailPage> {
             
            
             ),
+
+          
+            
             // Container(
             //   padding: const EdgeInsets.all(16),
             //   color: Colors.grey[200],
@@ -177,9 +184,15 @@ class _DetailPageState extends State<DetailPage> {
             //   ),
             // ),
           ],
+          
         ),
+
+        
       ),
+    
+    ),
     );
+
   }
 
   int getQuantity() {

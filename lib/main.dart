@@ -1,7 +1,11 @@
-import 'package:fds/pages/main_page.dart';
+import 'package:fds/firebase_options.dart';
+import 'package:fds/pages/registerpage.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
   runApp(const MyApp());
 }
 
@@ -22,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MainPage(),
+      home: const MyHomePage(),
     );
   }
 }
