@@ -1,6 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-
-import '../widgets/foodcard.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});
@@ -184,7 +183,6 @@ class _CustomerPageState extends State<CustomerPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const ProductList(),
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: Row(
@@ -208,7 +206,7 @@ class _CustomerPageState extends State<CustomerPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const ProductList()
+                  const FoodCard(),
                 ],
               ),
             ),
@@ -219,52 +217,157 @@ class _CustomerPageState extends State<CustomerPage> {
   }
 }
 
-class ProductList extends StatelessWidget {
-  const ProductList({super.key});
+class FoodCard extends StatefulWidget {
+  const FoodCard({super.key});
 
   @override
+  State<FoodCard> createState() => _FoodCardState();
+}
+
+class _FoodCardState extends State<FoodCard> {
+  @override
   Widget build(BuildContext context) {
-    return SizedBox(
+    final productSnapshot =
+        FirebaseFirestore.instance.collection('products').get();
+    return Container(
+      margin: const EdgeInsets.all(8),
+      width: 250,
       height: 330,
-      child: Padding(
-        padding: const EdgeInsets.only(
-          right: 6,
-          left: 7,
-        ),
-        child: ListView(
-          scrollDirection: Axis.horizontal,
-          children: const [
-            FoodCard(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-              title: 'Pizza',
-              description: ' toppings',
-              location: 'Ayeduase',
-            ),
-            FoodCard(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1561758033-d89a9ad46330?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8aGFtYnVyZ2VyfGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=2000&q=60',
-              title: 'Pizza',
-              description: ' toppings',
-              location: 'Ayeduase',
-            ),
-            FoodCard(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60',
-              title: 'Pizza',
-              description: ' toppings',
-              location: 'Ayeduase',
-            ),
-            FoodCard(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8cGl6emF8ZW58MHx8MHx8&auto=format&fit=crop&w=2000&q=60',
-              title: 'Pizza',
-              description: ' toppings',
-              location: 'Ayeduase',
-            ),
-          ],
-        ),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(14),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+          ),
+        ],
+      ),
+      child: FutureBuilder(
+        future: productSnapshot,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final List<QueryDocumentSnapshot> products = snapshot.data!.docs;
+            if (products.isEmpty) {
+              return const Center(
+                child: Text("No products"),
+              );
+            }
+            return ListView.separated(
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 30,
+              ),
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                final product = products[index].data() as Map<String, dynamic>;
+                final productImageUrl = product['imageURL'];
+                final productName = product['name'];
+
+                final productPrice = product['price'];
+                final productVendor = product['vendor'];
+                return Card(
+                  child: Column(
+                    children: [
+                      Image.network(
+                        productImageUrl,
+                        fit: BoxFit.cover,
+                        height: 210,
+                        width: 250,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  productVendor,
+                                  style: const TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(
+                                      "\$${productPrice.toStringAsFixed(2)}",
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.red,
+                                      )),
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 8.0,
+                              ),
+                              child: Text(productName,
+                                  style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w400)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 4.0,
+                                bottom: 0,
+                              ),
+                              child: Row(
+                                children: const [
+                                  Icon(
+                                    Icons.motorcycle_outlined,
+                                    size: 16,
+                                    color: Colors.grey,
+                                  ),
+                                  Text(
+                                    " 5-10 mins",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
 }
+
+
+// class ProductList extends StatelessWidget {
+//   const ProductList({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return SizedBox(
+//       height: 330,
+//       child: Padding(
+//         padding: const EdgeInsets.only(
+//           right: 6,
+//           left: 7,
+//         ),
+//         child: ListView(
+//           scrollDirection: Axis.horizontal,
+//           children: [
+             
+
+//           ],
+//         ),
+//       ),
+//     );
+//   }
+// }

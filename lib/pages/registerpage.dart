@@ -1,4 +1,5 @@
 import 'package:fds/auth/firebase.dart';
+import 'package:fds/pages/customer.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -12,8 +13,9 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.white,
         elevation: 0,
       ),
       body: SafeArea(
@@ -45,6 +47,12 @@ class _MyHomePageState extends State<MyHomePage> {
                             content: Text(
                           "Signed in with Google ${userDetails.displayName}",
                         )));
+
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const CustomerPage()),
+                        );
                       }
                     } catch (e) {
                       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -69,22 +77,31 @@ class _MyHomePageState extends State<MyHomePage> {
                   label: const Text(
                     "Continue with Google",
                     style: TextStyle(
-                      fontSize: 10,
+                      fontSize: 14,
                     ),
                   ),
                 ),
               ),
 
               const SizedBox(
-                height: 60,
+                height: 10,
               ),
 
-              const Center(
-                child: Text("or",
-                    style: TextStyle(
-                      fontSize: 20,
-                    )),
-              ),
+              Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+                Divider(
+                  thickness: 3,
+                  color: Colors.red,
+                ),
+                Text(
+                  "or",
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+                Divider(
+                  thickness: 1,
+                ),
+              ]),
 
               //  style: ElevatedButton.styleFrom(
               //    backgroundColor: Colors.white,
@@ -93,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
               //      borderRadius: BorderRadius.circular(30),
 
               const SizedBox(
-                height: 80,
+                height: 10,
               ),
 
               ElevatedButton(
@@ -101,24 +118,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 50, vertical: 25),
-                  side: const BorderSide(color: Colors.black12, width: 1),
+                  shape: const StadiumBorder(),
+                   padding:
+                      const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
+                  // side: const BorderSide(color: Colors.black12, width: 1),
                   elevation: 0,
                 ),
                 child: const Text(
                   "Sign in with Email and Password",
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: 14,
                   ),
                 ),
               ),
 
               const SizedBox(
-                height: 20,
+                height: 10,
               ),
 
               Row(

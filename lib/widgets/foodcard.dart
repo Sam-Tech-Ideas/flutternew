@@ -1,27 +1,22 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
-class FoodCard extends StatelessWidget {
-  final String imageUrl;
-  final String title;
-  final String description;
-  final String location;
-  // final String vendor;
-
-  const FoodCard({
-    super.key,
-    required this.imageUrl,
-    required this.title,
-    required this.location,
-    required this.description,
-    // required this.vendor,
-  });
+class FoodCard extends StatefulWidget {
+  const FoodCard({super.key});
 
   @override
+  State<FoodCard> createState() => _FoodCardState();
+}
+
+class _FoodCardState extends State<FoodCard> {
+  @override
   Widget build(BuildContext context) {
+    final productSnapshot =
+        FirebaseFirestore.instance.collection('products').get();
     return Container(
       margin: const EdgeInsets.all(8),
       width: 250,
-      height: 50,
+      height: 30,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -31,17 +26,101 @@ class FoodCard extends StatelessWidget {
           ),
         ],
       ),
-      child: Column(
-        children: [
-          Card(
-            child: Image.asset(
-              './images/am.jpg',
-              fit: BoxFit.cover,
-              height: 180,
-              width: 250,
-            ),
-          ),
-        ],
+      child: FutureBuilder(
+        future: productSnapshot,
+        builder: (context, snapshot) {
+          if (snapshot.hasData) {
+            final List<QueryDocumentSnapshot> products = snapshot.data!.docs;
+            if (products.isEmpty) {
+              return const Center(
+                child: Text("No products"),
+              );
+            }
+            return ListView.builder(
+              itemCount: products.length,
+              itemBuilder: (context, index) {
+                final product = products[index].data() as Map<String, dynamic>;
+                final productImageUrl = product['imageURL'];
+                final productName = product['name'];
+                final productDescription = product['desc'];
+                final productPrice = product['price'];
+                final productVendor = product['vendor'];
+                return Card(
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        productImageUrl,
+                        fit: BoxFit.cover,
+                        height: 210,
+                        width: 250,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(
+                                  productVendor,
+                                  style: const TextStyle(
+                                      fontSize: 14, color: Colors.grey),
+                                ),
+                                Align(
+                                  alignment: Alignment.centerRight,
+                                  child: Text(productPrice,
+                                      style: const TextStyle(
+                                        fontSize: 16,
+                                        color: Colors.red,
+                                      )),
+                                )
+                              ],
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 8.0,
+                              ),
+                              child: Text(productName,
+                                  style: const TextStyle(
+                                      fontSize: 24,
+                                      fontWeight: FontWeight.w400)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(
+                                top: 4.0,
+                                bottom: 0,
+                              ),
+                              child: Row(
+                                children: const [
+                                  Icon(
+                                    Icons.motorcycle_outlined,
+                                    size: 16,
+                                    color: Colors.grey,
+                                  ),
+                                  Text(
+                                    " 5-10 mins",
+                                    style: TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          }
+          return const Center(
+            child: CircularProgressIndicator(),
+          );
+        },
       ),
     );
   }
