@@ -1,3 +1,5 @@
+import 'package:fds/pages/cart.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
@@ -12,187 +14,358 @@ class _DetailPageState extends State<DetailPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () {},
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.favorite_outline),
-            onPressed: () {},
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        centerTitle: true,
+        leading: InkWell(
+          onTap: () {
+            Navigator.pop(context);
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black45,
           ),
-          IconButton(
-            onPressed: () {},
-            icon: const Icon(Icons.share_outlined),
-          )
+        ),
+        title: const Text(
+          "Pizza",
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 18,
+          ),
+        ),
+        actions: const [
+          Padding(
+              padding: EdgeInsets.only(
+                right: 10.0,
+              ),
+              child: Icon(
+                Icons.favorite,
+                color: Colors.black45,
+              ))
         ],
       ),
-      body:
-       
-       SafeArea(
-        child: SingleChildScrollView(
-        
+      body: SingleChildScrollView(
         child: Column(
           children: [
-            ClipRRect(
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(40),
-                bottomRight: Radius.circular(40),
+            const SizedBox(
+              height: 10,
+            ),
+            const Text(
+              "Missed Pizza with beef , chilli and cheese",
+              style: TextStyle(
+                fontSize: 18,
               ),
-              child: SizedBox(
-                width: double.infinity,
-                child: Image.asset(
-                  'images/am.jpg',
+              textAlign: TextAlign.center,
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+              Text(
+                "DailyBites",
+                style: TextStyle(
+                  fontSize: 18,
+                  color: Colors.black54,
+                  fontWeight: FontWeight.bold,
                 ),
               ),
-            ),
-            const SizedBox(
-              height: 20,
-            ),
+            ]),
+            ClipRRect(
+                borderRadius: BorderRadius.circular(
+                  360,
+                ),
+                child: Image.asset(
+                  "images/am.jpg",
+                  height: 200,
+                  width: 200,
+                )),
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
-                  Text(
-                    "Chinese burger",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  Text(
-                    "Ghc. 12",
-                    style: TextStyle(fontSize: 14, color: Colors.red),
-                  ),
-                ],
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: const [
-                  Text(
-                    "DailyBites Restaurant",
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.star_outline,
-                        size: 18,
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text("4.5"),
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.location_on,
-                        color: Colors.grey,
-                        size: 18,
-                      ),
-                      Text(
-                        "Ayeduase",
-                        style: TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Text(
+                          "Rating",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
                         ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.star,
+                          color: Colors.red,
+                          size: 16,
+                        ),
+                        Text(
+                          "4.7",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Container(
+                  height: 30,
+                  width: 1,
+                  color: Colors.grey,
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      "location",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
                       ),
-                    ],
-                  ),
-                  Row(
-                    children: const [
-                      Icon(
-                        Icons.motorcycle_outlined,
-                        size: 18,
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.location_on,
+                          color: Colors.red,
+                          size: 18,
+                        ),
+                        Text(
+                          "Ayeduase",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                Container(
+                  height: 30,
+                  width: 1,
+                  color: Colors.grey,
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      "Delivery Time",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
                       ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 8.0),
-                        child: Text("15-20 min"),
-                      )
-                    ],
-                  )
-                ],
-              ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.motorcycle_outlined,
+                          size: 18,
+                          color: Colors.red,
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "15-20 min",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
             ),
             const SizedBox(
-              height: 10,
-            
-           
+              height: 60,
             ),
-
-          
-            
-            // Container(
-            //   padding: const EdgeInsets.all(16),
-            //   color: Colors.grey[200],
-
-            //   child: Row(
-
-            //     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            //     children: [
-            //       Expanded(
-            //         child: Text(
-            //           'Quantity: ${getQuantity()}',
-            //           style: const TextStyle(
-            //             fontSize: 16,
-            //           ),
-            //         ),
-            //       ),
-            //       Expanded(
-            //         child: GestureDetector(
-            //           onTap: () {
-            //             Navigator.push(
-            //               context,
-            //               MaterialPageRoute(
-            //                 builder: (context) => const CustomerPage(),
-            //               ),
-            //             );
-            //           },
-            //           child: Text(
-            //             'Total: \$${getTotalPrice()}',
-            //             style: const TextStyle(
-            //               fontSize: 16,
-            //               color: Colors.red,
-            //             ),
-            //           ),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                  children: [
+                    Row(
+                      children: const [
+                        Text(
+                          "Order",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.grey,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.add_circle_outline_rounded,
+                          color: Colors.red,
+                        ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Text(
+                          "01",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 2,
+                        ),
+                        Icon(
+                          CupertinoIcons.minus_circle,
+                          color: Colors.red,
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      "Delivery Fee",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Text(
+                          "GH₵ 2.00",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    )
+                  ],
+                ),
+                Column(
+                  children: [
+                    const Text(
+                      "Price",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.grey,
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    Row(
+                      children: const [
+                        Padding(
+                          padding: EdgeInsets.only(left: 8.0),
+                          child: Text(
+                            "Ghce 45.00",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            Padding(
+              padding: const EdgeInsets.only(
+                left: 29,
+              ),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [],
+              ),
+            ),
           ],
-          
         ),
-
-        
       ),
-    
-    ),
-    );
+      floatingActionButton: InkWell(
+        onTap: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const CartPage(),
+            ),
+          );
+        },
+        child: Container(
+          height: 50,
+          margin: const EdgeInsets.only(
+            left: 30,
+          ),
+          width: double.infinity,
+          decoration: BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.circular(10),
+          ),
+          child: const Center(
+            child: Text(
+              "Add to Cart",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+              ),
+            ),
+          ),
+        ),
+      ),
+      //  FloatingActionButton(
 
+      //   onPressed: () {
+      //     Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //         builder: (context) => const CartPage(),
+      //       ),
+      //     );
+      //   },
+      //   backgroundColor: Colors.red,
+      //   child: const Icon(
+      //     Icons.shopping_cart,
+      //     color: Colors.white,
+      //   ),
+      // ),
+    );
   }
 
   int getQuantity() {
@@ -205,3 +378,42 @@ class _DetailPageState extends State<DetailPage> {
     return 45.0;
   }
 }
+// Row(
+//   children: const [
+//     Text(
+//       "Order",
+//       style: TextStyle(
+//         fontSize: 14,
+//         color: Colors.black,
+//       ),
+//     ),
+//   ],
+// ),
+// const SizedBox(
+//   height: 10,
+// ),
+// Row(
+//   children: const [
+//     Icon(
+//       Icons.add_circle_outline_rounded,
+//       color: Colors.red,
+//     ),
+//     SizedBox(
+//       width: 2,
+//     ),
+//     Text(
+//       "01",
+//       style: TextStyle(
+//         fontSize: 14,
+//         color: Colors.black,
+//       ),
+//     ),
+//     SizedBox(
+//       width: 2,
+//     ),
+//     Icon(
+//       CupertinoIcons.minus_circle,
+//       color: Colors.red,
+//     ),
+//   ],
+// ),
