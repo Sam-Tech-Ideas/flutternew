@@ -1,4 +1,3 @@
-import 'package:fds/pages/checkout.dart';
 import 'package:fds/pages/customer.dart';
 import 'package:fds/pages/detailpage.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +14,8 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List pages = [
     const CustomerPage(),
-    const CheckoutPage(),
-    const DetailPage(),
     const CartPage(),
+    const DetailPage(),
   ];
 
   int currentIndex = 0;

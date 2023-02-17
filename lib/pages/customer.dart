@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:fds/pages/detailpage.dart';
 import 'package:flutter/material.dart';
 
 class CustomerPage extends StatefulWidget {
@@ -14,7 +15,7 @@ class _CustomerPageState extends State<CustomerPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SizedBox(
-        height: 1050,
+        height: 650,
         child: Scaffold(
           body: SafeArea(
             child: Center(
@@ -203,9 +204,6 @@ class _CustomerPageState extends State<CustomerPage> {
                       ],
                     ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   const FoodCard(),
                 ],
               ),
@@ -230,9 +228,8 @@ class _FoodCardState extends State<FoodCard> {
     final productSnapshot =
         FirebaseFirestore.instance.collection('products').get();
     return Container(
-      margin: const EdgeInsets.all(8),
-      width: 250,
-      height: 330,
+      width: double.infinity,
+      height: 280,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -252,11 +249,8 @@ class _FoodCardState extends State<FoodCard> {
                 child: Text("No products"),
               );
             }
-            return ListView.separated(
+            return ListView.builder(
               scrollDirection: Axis.horizontal,
-              separatorBuilder: (context, index) => const SizedBox(
-                width: 30,
-              ),
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index].data() as Map<String, dynamic>;
@@ -265,74 +259,35 @@ class _FoodCardState extends State<FoodCard> {
 
                 final productPrice = product['price'];
                 final productVendor = product['vendor'];
-                return Card(
-                  child: Column(
-                    children: [
-                      Image.network(
-                        productImageUrl,
-                        fit: BoxFit.cover,
-                        height: 210,
-                        width: 250,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text(
-                                  productVendor,
-                                  style: const TextStyle(
-                                      fontSize: 14, color: Colors.grey),
-                                ),
-                                Align(
-                                  alignment: Alignment.centerRight,
-                                  child: Text(
-                                      "\$${productPrice.toStringAsFixed(2)}",
-                                      style: const TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.red,
-                                      )),
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 8.0,
-                              ),
-                              child: Text(productName,
-                                  style: const TextStyle(
-                                      fontSize: 24,
-                                      fontWeight: FontWeight.w400)),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(
-                                top: 4.0,
-                                bottom: 0,
-                              ),
-                              child: Row(
-                                children: const [
-                                  Icon(
-                                    Icons.motorcycle_outlined,
-                                    size: 16,
-                                    color: Colors.grey,
-                                  ),
-                                  Text(
-                                    " 5-10 mins",
-                                    style: TextStyle(
-                                      fontSize: 16,
-                                      color: Colors.grey,
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
+                return Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const DetailPage(
+                          
+                            // productName: productName,
+                            // productPrice: productPrice,
+                            // productVendor: productVendor,
+                            // productImageUrl: productImageUrl,
+                          ),
                         ),
+                      );
+                    },
+                    child: Card(
+                      child: Column(
+                        children: <Widget>[
+                          Image.network(
+                            productImageUrl,
+                            fit: BoxFit.cover,
+                            height: 180.0,
+                            width: 260,
+                          ),
+                        ],
                       ),
-                    ],
+                    ),
                   ),
                 );
               },
@@ -346,28 +301,3 @@ class _FoodCardState extends State<FoodCard> {
     );
   }
 }
-
-
-// class ProductList extends StatelessWidget {
-//   const ProductList({super.key});
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return SizedBox(
-//       height: 330,
-//       child: Padding(
-//         padding: const EdgeInsets.only(
-//           right: 6,
-//           left: 7,
-//         ),
-//         child: ListView(
-//           scrollDirection: Axis.horizontal,
-//           children: [
-             
-
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }

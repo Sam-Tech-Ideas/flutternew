@@ -1,5 +1,5 @@
 import 'package:fds/auth/firebase.dart';
-import 'package:fds/pages/customer.dart';
+import 'package:fds/pages/main_page.dart';
 import 'package:flutter/material.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const CustomerPage()),
+                              builder: (context) => const MainPage()),
                         );
                       }
                     } catch (e) {
@@ -119,7 +119,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   backgroundColor: Colors.red,
                   foregroundColor: Colors.white,
                   shape: const StadiumBorder(),
-                   padding:
+                  padding:
                       const EdgeInsets.symmetric(horizontal: 34, vertical: 16),
                   // side: const BorderSide(color: Colors.black12, width: 1),
                   elevation: 0,

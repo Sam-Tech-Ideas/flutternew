@@ -16,7 +16,7 @@ class _FoodCardState extends State<FoodCard> {
     return Container(
       margin: const EdgeInsets.all(8),
       width: 250,
-      height: 30,
+      height: 330,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -36,22 +36,26 @@ class _FoodCardState extends State<FoodCard> {
                 child: Text("No products"),
               );
             }
-            return ListView.builder(
+            return ListView.separated(
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (context, index) => const SizedBox(
+                width: 30,
+              ),
               itemCount: products.length,
               itemBuilder: (context, index) {
                 final product = products[index].data() as Map<String, dynamic>;
                 final productImageUrl = product['imageURL'];
                 final productName = product['name'];
-                final productDescription = product['desc'];
+
                 final productPrice = product['price'];
                 final productVendor = product['vendor'];
                 return Card(
                   child: Column(
                     children: [
-                      Image.asset(
+                      Image.network(
                         productImageUrl,
                         fit: BoxFit.cover,
-                        height: 210,
+                        height: 200,
                         width: 250,
                       ),
                       Padding(
@@ -69,7 +73,8 @@ class _FoodCardState extends State<FoodCard> {
                                 ),
                                 Align(
                                   alignment: Alignment.centerRight,
-                                  child: Text(productPrice,
+                                  child: Text(
+                                      "\$${productPrice.toStringAsFixed(2)}",
                                       style: const TextStyle(
                                         fontSize: 16,
                                         color: Colors.red,
