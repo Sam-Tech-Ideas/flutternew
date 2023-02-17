@@ -40,7 +40,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
               child: Icon(
                 Icons.favorite,
-                color: Colors.black45,
+                color: Colors.red,
               ))
         ],
       ),
@@ -52,9 +52,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
             const Text(
               "Missed Pizza with beef , chilli and cheese",
-              style: TextStyle(
-                fontSize: 18,
-              ),
+              style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
               textAlign: TextAlign.center,
             ),
             const SizedBox(
@@ -70,21 +68,10 @@ class _DetailPageState extends State<DetailPage> {
                 ),
               ),
             ]),
-            ClipRRect(
-                borderRadius: BorderRadius.circular(
-                  360,
-                ),
-                child: Image.asset(
-                  "images/am.jpg",
-                  height: 200,
-                  width: 200,
-                )),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [],
-              ),
+            Image.asset(
+              "images/am.jpg",
+              height: 300,
+              width: 400,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -202,7 +189,7 @@ class _DetailPageState extends State<DetailPage> {
               ],
             ),
             const SizedBox(
-              height: 60,
+              height: 10,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -268,7 +255,7 @@ class _DetailPageState extends State<DetailPage> {
                           "GH₵ 2.00",
                           style: TextStyle(
                             fontSize: 14,
-                            color: Colors.black,
+                            color: Colors.red,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -296,7 +283,7 @@ class _DetailPageState extends State<DetailPage> {
                             "Ghce 45.00",
                             style: TextStyle(
                               fontSize: 14,
-                              color: Colors.black,
+                              color: Colors.red,
                               fontWeight: FontWeight.bold,
                             ),
                           ),

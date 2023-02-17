@@ -1,5 +1,5 @@
 import 'package:fds/pages/customer.dart';
-import 'package:fds/pages/detailpage.dart';
+import 'package:fds/pages/order.dart';
 import 'package:flutter/material.dart';
 
 import 'cart.dart';
@@ -15,7 +15,8 @@ class _MainPageState extends State<MainPage> {
   List pages = [
     const CustomerPage(),
     const CartPage(),
-    const DetailPage(),
+     OrderHistory(),
+     OrderHistory()
   ];
 
   int currentIndex = 0;
