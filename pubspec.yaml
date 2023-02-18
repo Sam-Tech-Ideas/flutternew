@@ -17,6 +17,7 @@ dependencies:
   firebase_core: ^2.5.0
   google_sign_in: ^5.4.4
   firebase_auth: ^4.2.6
+  flutter_slidable: ^1.2.0
 
 dev_dependencies:
   flutter_test:

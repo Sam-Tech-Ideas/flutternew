@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class Order {
   final String id;
@@ -29,7 +30,7 @@ class _OrderHistoryState extends State<OrderHistory> {
   final List<Order> _orders = [
     Order(
       id: '1',
-      name: 'John Doe',
+      name: 'Fufu',
       vendor: 'Burger King',
       quantity: '2',
       totalAmount: 123.45,
@@ -38,7 +39,7 @@ class _OrderHistoryState extends State<OrderHistory> {
     ),
     Order(
       id: '2',
-      name: 'Jane Smith',
+      name: 'Pizza',
       vendor: 'Burger King',
       quantity: '2',
       totalAmount: 678.90,
@@ -56,16 +57,28 @@ class _OrderHistoryState extends State<OrderHistory> {
       body: ListView.builder(
         itemCount: _orders.length,
         itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ListTile(
-              leading: Image.network(
-                _orders[index].imageUrl,
-                width: 100,
+          return Slidable(
+            endActionPane: ActionPane(
+                openThreshold: 0.7,
+                motion: const StretchMotion(),
+                children: [
+                  SlidableAction(
+                    onPressed: (context) {},
+                    icon: Icons.delete,
+                     backgroundColor: Colors.red,
+                  ),
+                ]),
+            child: Card(
+              child: ListTile(
+                leading: Image.network(
+                  _orders[index].imageUrl,
+                  width: 100,
+                ),
+                title: Text(_orders[index].name),
+                subtitle: Text(_orders[index].vendor),
+                trailing:
+                    Text('\$${_orders[index].totalAmount.toStringAsFixed(2)}'),
               ),
-              title: Text(_orders[index].name),
-              subtitle: Text(_orders[index].vendor),
-              trailing:
-                  Text('\$${_orders[index].totalAmount.toStringAsFixed(2)}'),
             ),
           );
         },
