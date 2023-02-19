@@ -15,7 +15,7 @@ class _CustomerPageState extends State<CustomerPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SizedBox(
-        height: 650,
+        height: 750,
         child: Scaffold(
           body: SafeArea(
             child: Center(
@@ -229,7 +229,7 @@ class _FoodCardState extends State<FoodCard> {
         FirebaseFirestore.instance.collection('products').get();
     return Container(
       width: double.infinity,
-      height: 280,
+      height: 240,
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(14),
@@ -266,8 +266,8 @@ class _FoodCardState extends State<FoodCard> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  DetailPage(
-                            
+                          builder: (context) => const DetailPage(
+
                               //  productName: productName,
                               //  productPrice: productPrice,
                               //  productVendor: productVendor,
@@ -282,8 +282,75 @@ class _FoodCardState extends State<FoodCard> {
                           Image.network(
                             productImageUrl,
                             fit: BoxFit.cover,
-                            height: 180.0,
+                            height: 140.0,
                             width: 260,
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          SizedBox(
+                            width: 260,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    productName,
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Text(
+                                    productVendor,
+                                    style: const TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.grey,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          SizedBox(
+                            width: 260,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                horizontal: 8.0,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    "Ghc $productPrice",
+                                    style: const TextStyle(
+                                      fontSize: 16,
+                                      color: Colors.red,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  Row(
+                                    children: const [
+                                      Icon(
+                                        Icons.motorcycle_outlined,
+                                        color: Colors.red,
+                                        size: 16,
+                                      ),
+                                      Text(
+                                        "15 - 20 mins",
+                                        style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.grey,
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
                           ),
                         ],
                       ),

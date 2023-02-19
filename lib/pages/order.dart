@@ -65,19 +65,27 @@ class _OrderHistoryState extends State<OrderHistory> {
                   SlidableAction(
                     onPressed: (context) {},
                     icon: Icons.delete,
-                     backgroundColor: Colors.red,
+                    backgroundColor: Colors.red,
                   ),
                 ]),
-            child: Card(
-              child: ListTile(
-                leading: Image.network(
-                  _orders[index].imageUrl,
-                  width: 100,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(
+                vertical: 5,
+              ),
+              child: SizedBox(
+                height: 100,
+                child: Card(
+                  child: ListTile(
+                    leading: Image.network(
+                      _orders[index].imageUrl,
+                      height: 40,
+                    ),
+                    title: Text(_orders[index].name),
+                    subtitle: Text(_orders[index].vendor),
+                    trailing: Text(
+                        '\$${_orders[index].totalAmount.toStringAsFixed(2)}'),
+                  ),
                 ),
-                title: Text(_orders[index].name),
-                subtitle: Text(_orders[index].vendor),
-                trailing:
-                    Text('\$${_orders[index].totalAmount.toStringAsFixed(2)}'),
               ),
             ),
           );

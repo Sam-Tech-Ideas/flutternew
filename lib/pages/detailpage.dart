@@ -215,6 +215,7 @@ class _DetailPageState extends State<DetailPage> {
                         Icon(
                           Icons.add_circle_outline_rounded,
                           color: Colors.red,
+                          size: 24,
                         ),
                         SizedBox(
                           width: 2,
@@ -232,6 +233,7 @@ class _DetailPageState extends State<DetailPage> {
                         Icon(
                           CupertinoIcons.minus_circle,
                           color: Colors.red,
+                          size: 24,
                         ),
                       ],
                     ),
