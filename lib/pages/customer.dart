@@ -21,74 +21,10 @@ class _CustomerPageState extends State<CustomerPage> {
             child: Center(
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(
-                          top: 8,
-                          left: 8,
-                        ),
-                        child: Text("Hi Samuel, ",
-                            style: TextStyle(
-                              fontSize: 14,
-                            )),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(
-                          top: 8,
-                        ),
-                        child: Row(
-                          children: [
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.black12,
-                                  width: 1.0,
-                                ),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.notifications_active_outlined,
-                                  size: 19,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                            Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(
-                                  color: Colors.black12,
-                                  width: 1.0,
-                                ),
-                                shape: BoxShape.circle,
-                              ),
-                              child: const Padding(
-                                padding: EdgeInsets.all(8.0),
-                                child: Icon(
-                                  Icons.shopping_bag_outlined,
-                                  size: 19,
-                                ),
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 10,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
                   Padding(
-                    padding: const EdgeInsets.all(20.0),
+                    padding: const EdgeInsets.all(14.0),
                     child: Container(
+                      height: 50,
                       color: Colors.grey[200],
                       child: const TextField(
                         decoration: InputDecoration(
@@ -214,6 +150,40 @@ class _CustomerPageState extends State<CustomerPage> {
     );
   }
 }
+
+
+
+// class MyWidget extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return FutureBuilder(
+//       future: fetchCategories(),
+//       builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
+//         if (snapshot.hasData) {
+//           return ListView.builder(
+//             itemCount: snapshot.data.length,
+//             itemBuilder: (BuildContext context, int index) {
+//               return ListTile(
+//                 title: Text(snapshot.data[index]),
+//               );
+//             },
+//           );
+//         } else {
+//           return Center(
+//             child: CircularProgressIndicator(),
+//           );
+//         }
+//       },
+//     );
+//   }
+// }
+
+
+
+
+
+
+
 
 class FoodCard extends StatefulWidget {
   const FoodCard({super.key});
