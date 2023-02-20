@@ -266,12 +266,12 @@ class _FoodCardState extends State<FoodCard> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => const DetailPage(
+                          builder: (context) =>  DetailPage(
 
-                              //  productName: productName,
-                              //  productPrice: productPrice,
-                              //  productVendor: productVendor,
-                              //  productImageUrl: productImageUrl,
+                               productName: productName,
+                                productPrice: productPrice,
+                                productVendor: productVendor,
+                                productImageUrl: productImageUrl,
                               ),
                         ),
                       );

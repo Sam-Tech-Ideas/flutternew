@@ -1,15 +1,30 @@
-import 'package:fds/pages/cart.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({super.key});
+  const DetailPage(
+      {super.key,
+      required this.productName,
+      required this.productVendor,
+      required this.productPrice,
+      required this.productImageUrl});
+
+  final String productName;
+  final String productVendor;
+  final String productImageUrl;
+  final int productPrice;
 
   @override
   State<DetailPage> createState() => _DetailPageState();
 }
 
 class _DetailPageState extends State<DetailPage> {
+  @override
+  void initState() {
+    print(' Price :${widget.productPrice}');
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,9 +41,9 @@ class _DetailPageState extends State<DetailPage> {
             color: Colors.black45,
           ),
         ),
-        title: const Text(
-          "Pizza",
-          style: TextStyle(
+        title: Text(
+          widget.productName,
+          style: const TextStyle(
             color: Colors.black,
             fontSize: 18,
           ),
@@ -58,18 +73,18 @@ class _DetailPageState extends State<DetailPage> {
             const SizedBox(
               height: 8,
             ),
-            Row(mainAxisAlignment: MainAxisAlignment.center, children: const [
+            Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                "DailyBites",
-                style: TextStyle(
+                widget.productVendor,
+                style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black54,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ]),
-            Image.asset(
-              "images/am.jpg",
+            Image.network(
+              widget.productImageUrl,
               height: 300,
               width: 400,
             ),
@@ -278,14 +293,14 @@ class _DetailPageState extends State<DetailPage> {
                       height: 10,
                     ),
                     Row(
-                      children: const [
+                      children: [
                         Padding(
-                          padding: EdgeInsets.only(left: 8.0),
+                          padding: const EdgeInsets.only(left: 8.0),
                           child: Text(
-                            "Ghce 45.00",
-                            style: TextStyle(
+                            '${widget.productPrice}',
+                            style: const TextStyle(
                               fontSize: 14,
-                              color: Colors.red,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -310,11 +325,27 @@ class _DetailPageState extends State<DetailPage> {
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => const CartPage(),
-            ),
+          showModalBottomSheet(
+            backgroundColor: Colors.transparent,
+            context: context,
+            builder: (BuildContext context) {
+              return Container(
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                    topLeft: Radius.circular(40),
+                    topRight: Radius.circular(40),
+                  ),
+                ),
+                height: 200,
+                child: const Center(
+                  child: Text(
+                    'This is a modal bottom sheet',
+                    style: TextStyle(fontSize: 24),
+                  ),
+                ),
+              );
+            },
           );
         },
         child: Container(
@@ -327,12 +358,14 @@ class _DetailPageState extends State<DetailPage> {
             color: Colors.red,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: const Center(
-            child: Text(
-              "Add to Cart",
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18,
+          child: GestureDetector(
+            child: const Center(
+              child: Text(
+                "Add to Cart",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                ),
               ),
             ),
           ),
