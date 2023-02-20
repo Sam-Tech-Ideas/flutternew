@@ -15,7 +15,7 @@ class _CustomerPageState extends State<CustomerPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SizedBox(
-        height: 750,
+        height: 586,
         child: Scaffold(
           body: SafeArea(
             child: Center(
@@ -266,13 +266,12 @@ class _FoodCardState extends State<FoodCard> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) =>  DetailPage(
-
-                               productName: productName,
-                                productPrice: productPrice,
-                                productVendor: productVendor,
-                                productImageUrl: productImageUrl,
-                              ),
+                          builder: (context) => DetailPage(
+                            productName: productName,
+                            productPrice: productPrice,
+                            productVendor: productVendor,
+                            productImageUrl: productImageUrl,
+                          ),
                         ),
                       );
                     },

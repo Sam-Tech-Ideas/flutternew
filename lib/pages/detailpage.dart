@@ -329,21 +329,98 @@ class _DetailPageState extends State<DetailPage> {
             backgroundColor: Colors.transparent,
             context: context,
             builder: (BuildContext context) {
-              return Container(
-                decoration: const BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(40),
-                    topRight: Radius.circular(40),
-                  ),
-                ),
-                height: 200,
-                child: const Center(
-                  child: Text(
-                    'This is a modal bottom sheet',
-                    style: TextStyle(fontSize: 24),
-                  ),
-                ),
+              return SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                        topLeft: Radius.circular(25),
+                        topRight: Radius.circular(25),
+                      ),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Column(
+                        children: [
+                          const Padding(
+                            padding: EdgeInsets.all(8.0),
+                            child: Text(
+                              "Have you got everything?",
+                              style: TextStyle(
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                          ListTile(
+                            leading: Container(
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  color: Colors.red,
+                                ),
+                                child: Image.asset("images/am.jpg")),
+                            title: const Text("Chicken"),
+                            subtitle: const Text("GH₵ 10.00"),
+                            trailing: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              children: const [
+                                Icon(
+                                  Icons.add_circle_outline_rounded,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Text(
+                                  "01",
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    color: Colors.black,
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 2,
+                                ),
+                                Icon(
+                                  CupertinoIcons.minus_circle,
+                                  color: Colors.red,
+                                  size: 30,
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Container(
+                              height: 50,
+                              margin: const EdgeInsets.only(),
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: GestureDetector(
+                                onTap: () {},
+                                child: const Center(
+                                  child: Text(
+                                    "Checkout",
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 18,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    )),
               );
             },
           );
@@ -371,22 +448,6 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
       ),
-      //  FloatingActionButton(
-
-      //   onPressed: () {
-      //     Navigator.push(
-      //       context,
-      //       MaterialPageRoute(
-      //         builder: (context) => const CartPage(),
-      //       ),
-      //     );
-      //   },
-      //   backgroundColor: Colors.red,
-      //   child: const Icon(
-      //     Icons.shopping_cart,
-      //     color: Colors.white,
-      //   ),
-      // ),
     );
   }
 
