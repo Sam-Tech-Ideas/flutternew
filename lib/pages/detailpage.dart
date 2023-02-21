@@ -1,3 +1,4 @@
+import 'package:fds/pages/checkout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -405,7 +406,15 @@ class _DetailPageState extends State<DetailPage> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const CheckoutPage(),
+                                    ),
+                                  );
+                                },
                                 child: const Center(
                                   child: Text(
                                     "Checkout",
