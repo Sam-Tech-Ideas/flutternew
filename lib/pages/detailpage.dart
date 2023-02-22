@@ -20,9 +20,9 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
+  List<CartItem> cart = [];
   @override
   void initState() {
-    print(' Price :${widget.productPrice}');
     super.initState();
   }
 
@@ -397,24 +397,23 @@ class _DetailPageState extends State<DetailPage> {
                           ),
                           Padding(
                             padding: const EdgeInsets.all(16.0),
-                            child: Container(
-                              height: 50,
-                              margin: const EdgeInsets.only(),
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.red,
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: GestureDetector(
-                                onTap: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) =>
-                                          const CheckoutPage(),
-                                    ),
-                                  );
-                                },
+                            child: GestureDetector(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const CheckoutPage(),
+                                  ),
+                                );
+                              },
+                              child: Container(
+                                height: 50,
+                                margin: const EdgeInsets.only(),
+                                width: double.infinity,
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  borderRadius: BorderRadius.circular(10),
+                                ),
                                 child: const Center(
                                   child: Text(
                                     "Checkout",
@@ -470,6 +469,18 @@ class _DetailPageState extends State<DetailPage> {
     return 45.0;
   }
 }
+
+class CartItem {
+  String productName;
+  double productPrice;
+  int quantity;
+
+  CartItem(
+      {required this.productName,
+      required this.productPrice,
+      required this.quantity});
+}
+
 // Row(
 //   children: const [
 //     Text(

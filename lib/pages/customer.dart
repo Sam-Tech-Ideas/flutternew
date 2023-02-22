@@ -15,7 +15,7 @@ class _CustomerPageState extends State<CustomerPage> {
     return SingleChildScrollView(
       scrollDirection: Axis.vertical,
       child: SizedBox(
-        height: 586,
+        height: 820,
         child: Scaffold(
           body: SafeArea(
             child: Center(
@@ -141,6 +141,32 @@ class _CustomerPageState extends State<CustomerPage> {
                     ),
                   ),
                   const FoodCard(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text(
+                            "Recommended",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                          Text(
+                            "See all",
+                            style: TextStyle(
+                              fontSize: 14,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  const FoodCard()
                 ],
               ),
             ),
@@ -150,40 +176,6 @@ class _CustomerPageState extends State<CustomerPage> {
     );
   }
 }
-
-
-
-// class MyWidget extends StatelessWidget {
-//   @override
-//   Widget build(BuildContext context) {
-//     return FutureBuilder(
-//       future: fetchCategories(),
-//       builder: (BuildContext context, AsyncSnapshot<List<String>> snapshot) {
-//         if (snapshot.hasData) {
-//           return ListView.builder(
-//             itemCount: snapshot.data.length,
-//             itemBuilder: (BuildContext context, int index) {
-//               return ListTile(
-//                 title: Text(snapshot.data[index]),
-//               );
-//             },
-//           );
-//         } else {
-//           return Center(
-//             child: CircularProgressIndicator(),
-//           );
-//         }
-//       },
-//     );
-//   }
-// }
-
-
-
-
-
-
-
 
 class FoodCard extends StatefulWidget {
   const FoodCard({super.key});

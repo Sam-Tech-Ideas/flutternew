@@ -1,4 +1,3 @@
-import 'package:fds/pages/order.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -138,50 +137,36 @@ class _CheckoutPageState extends State<CheckoutPage> {
             const SizedBox(
               height: 20,
             ),
-            Container(
-              height: 50,
-              margin: const EdgeInsets.only(
-                left: 30,
-                right: 30,
-              ),
-              width: double.infinity,
-              decoration: BoxDecoration(
-                color: Colors.red,
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: GestureDetector(
-                onTap: () {
-                  showDialog(
+            GestureDetector(
+              onTap: () {
+                showDialog(
                     context: context,
-                    builder: (context) {
+                    builder: (BuildContext context) {
                       return AlertDialog(
                         title: const Text("Order Placed"),
-                        content: const Text("Your order has been placed"),
+                        content: const Text(
+                            "Your order has been placed successfully"),
                         actions: [
                           TextButton(
-                            onPressed: () {
-                              Navigator.pop(context);
-                            },
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.of(context).push(
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                          const OrderHistory()),
-                                );
-                              },
-                              child: const Text("View Order"),
-                            ),
-                          ),
+                              onPressed: null,
+                              child: GestureDetector(
+                                  onTap: () {},
+                                  child: const Text("View Orders")))
                         ],
                       );
-                    },
-                  );
-                },
-                // onTap: () => Navigator.push(
-
-                //                  return
-
+                    });
+              },
+              child: Container(
+                height: 50,
+                margin: const EdgeInsets.only(
+                  left: 30,
+                  right: 30,
+                ),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.red,
+                  borderRadius: BorderRadius.circular(10),
+                ),
                 child: const Center(
                   child: Text(
                     "Place Order",
