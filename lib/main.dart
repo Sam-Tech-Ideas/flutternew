@@ -1,5 +1,5 @@
 import 'package:fds/firebase_options.dart';
-import 'package:fds/pages/registerpage.dart';
+import 'package:fds/pages/try.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
@@ -26,7 +26,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(),
+      home: TryApp(),
     );
   }
 }

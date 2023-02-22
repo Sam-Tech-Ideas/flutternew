@@ -2,6 +2,42 @@ import 'package:fds/pages/checkout.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 class DetailPage extends StatefulWidget {
   const DetailPage(
       {super.key,
@@ -20,7 +56,7 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  List<CartItem> cart = [];
+  
   @override
   void initState() {
     super.initState();
@@ -444,6 +480,13 @@ class _DetailPageState extends State<DetailPage> {
             borderRadius: BorderRadius.circular(10),
           ),
           child: GestureDetector(
+            onTap:  () {
+                // Create a new cart item
+                
+                //cart.addItem(item);
+                // Save cart to local storage
+                //saveCartToLocal(cart);
+              },
             child: const Center(
               child: Text(
                 "Add to Cart",
@@ -456,6 +499,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
       ),
+      
     );
   }
 
@@ -470,53 +514,3 @@ class _DetailPageState extends State<DetailPage> {
   }
 }
 
-class CartItem {
-  String productName;
-  double productPrice;
-  int quantity;
-
-  CartItem(
-      {required this.productName,
-      required this.productPrice,
-      required this.quantity});
-}
-
-// Row(
-//   children: const [
-//     Text(
-//       "Order",
-//       style: TextStyle(
-//         fontSize: 14,
-//         color: Colors.black,
-//       ),
-//     ),
-//   ],
-// ),
-// const SizedBox(
-//   height: 10,
-// ),
-// Row(
-//   children: const [
-//     Icon(
-//       Icons.add_circle_outline_rounded,
-//       color: Colors.red,
-//     ),
-//     SizedBox(
-//       width: 2,
-//     ),
-//     Text(
-//       "01",
-//       style: TextStyle(
-//         fontSize: 14,
-//         color: Colors.black,
-//       ),
-//     ),
-//     SizedBox(
-//       width: 2,
-//     ),
-//     Icon(
-//       CupertinoIcons.minus_circle,
-//       color: Colors.red,
-//     ),
-//   ],
-// ),

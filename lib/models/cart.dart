@@ -1,24 +1,16 @@
-import 'package:flutter/cupertino.dart';
 
-import 'item.dart';
 
-class CartModel extends ChangeNotifier {
-  final List<Item> _items = [];
 
-  List<Item> get items => _items;
+import 'package:flutter/foundation.dart';
 
-  void addItem(Item item) {
-    _items.add(item);
-    //notifyListeners();
-  }
+import '../pages/try.dart';
 
-  void removeItem(Item item) {
-    _items.remove(item);
-    //notifyListeners();
-  }
+class CartModel extends ValueNotifier<Cart> {
+  CartModel(Cart cart) : super(cart);
 
-  void updateItemQuantity(Item item, int quantity) {
-    item.quantity = quantity;
-    //notifyListeners();
+  void addItemToCart(String item) {
+    Cart cart = value;
+    cart.addItem(item);
+    notifyListeners();
   }
 }
