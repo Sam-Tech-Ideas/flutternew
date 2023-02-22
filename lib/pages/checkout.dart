@@ -1,3 +1,4 @@
+import 'package:fds/pages/order.dart';
 import 'package:flutter/material.dart';
 
 class CheckoutPage extends StatefulWidget {
@@ -149,6 +150,38 @@ class _CheckoutPageState extends State<CheckoutPage> {
                 borderRadius: BorderRadius.circular(10),
               ),
               child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                    context: context,
+                    builder: (context) {
+                      return AlertDialog(
+                        title: const Text("Order Placed"),
+                        content: const Text("Your order has been placed"),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pop(context);
+                            },
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const OrderHistory()),
+                                );
+                              },
+                              child: const Text("View Order"),
+                            ),
+                          ),
+                        ],
+                      );
+                    },
+                  );
+                },
+                // onTap: () => Navigator.push(
+
+                //                  return
+
                 child: const Center(
                   child: Text(
                     "Place Order",
