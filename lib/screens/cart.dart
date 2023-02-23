@@ -52,10 +52,13 @@ class CartProductCard extends StatelessWidget {
       child: Card(
         child: Row(
           children: [
-            Image.network(
-              product.imageUrl,
-              width: 100,
-              height: 100,
+            GestureDetector(
+              onTap:()
+              child: Image.network(
+                product.imageUrl,
+                width: 100,
+                height: 100,
+              ),
             ),
             const SizedBox(width: 10),
             Column(
