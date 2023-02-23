@@ -82,12 +82,12 @@ class CartProductCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // TextButton(
-                //   onPressed: () {
-                //     controller.removeProduct(product);
-                //   },
-                //   child: const Text('Remove'),
-                // ),
+                TextButton(
+                  onPressed: () {
+                    controller.removeProduct(product);
+                  },
+                  child: const Text('Remove'),
+                ),
               ],
             ),
           ],

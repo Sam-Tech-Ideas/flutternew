@@ -40,15 +40,10 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
       child: Card(
         child: Row(
           children: [
-            GestureDetector(
-              onTap: () {
-                Get.to(() => CartProducts());
-              },
-              child: Image.network(
-                Product.products[widget.index].imageUrl,
-                width: 100,
-                height: 100,
-              ),
+            Image.network(
+              Product.products[widget.index].imageUrl,
+              width: 100,
+              height: 100,
             ),
             const SizedBox(width: 10),
             Column(
@@ -75,7 +70,9 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
                   widget.cartController
                       .addProduct(Product.products[widget.index]);
                 },
-                icon: const Icon(Icons.add_circle))
+                icon: const Icon(Icons.add_circle),),
+                
+
           ],
         ),
       ),
