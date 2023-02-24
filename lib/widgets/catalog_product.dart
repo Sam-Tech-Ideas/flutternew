@@ -1,20 +1,23 @@
 import 'package:fds/controllers/cart_controller.dart';
-import 'package:fds/models/product_model.dart';
-import 'package:fds/screens/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../controllers/product_controller.dart';
+
 class CatalogProducts extends StatelessWidget {
-  const CatalogProducts({super.key});
+  final productController = Get.put(ProductController());
+  CatalogProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.builder(
-        itemCount: Product.products.length,
-        itemBuilder: (BuildContext context, int index) {
-          return CatalogProductCard(index: index);
-        },
+    return Obx(
+      () => Flexible(
+        child: ListView.builder(
+          itemCount: productController.products.length,
+          itemBuilder: (BuildContext context, int index) {
+            return CatalogProductCard(index: index);
+          },
+        ),
       ),
     );
   }
@@ -22,6 +25,7 @@ class CatalogProducts extends StatelessWidget {
 
 class CatalogProductCard extends StatefulWidget {
   final cartController = Get.put(CartController());
+  final ProductController productController = Get.find();
   final int index;
   CatalogProductCard({
     Key? key,
@@ -41,7 +45,7 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
         child: Row(
           children: [
             Image.network(
-              Product.products[widget.index].imageUrl,
+              widget.productController.products[widget.index].imageUrl,
               width: 100,
               height: 100,
             ),
@@ -50,14 +54,14 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  Product.products[widget.index].name,
+                  widget.productController.products[widget.index].name,
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
                 Text(
-                  'GHC ${Product.products[widget.index].price}',
+                  'GHC ${widget.productController.products[widget.index].price}',
                   style: const TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
@@ -66,13 +70,19 @@ class _CatalogProductCardState extends State<CatalogProductCard> {
               ],
             ),
             IconButton(
-                onPressed: () {
-                  widget.cartController
-                      .addProduct(Product.products[widget.index]);
-                },
-                icon: const Icon(Icons.add_circle),),
-                
-
+              onPressed: () {
+                widget.cartController.addProduct(
+                    widget.productController.products[widget.index]);
+              },
+              icon: const Icon(Icons.add_circle),
+            ),
+            IconButton(
+              onPressed: () {
+                widget.cartController.removeProduct(
+                    widget.productController.products[widget.index]);
+              },
+              icon: const Icon(Icons.remove_circle),
+            ),
           ],
         ),
       ),

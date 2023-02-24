@@ -1,5 +1,6 @@
-import 'package:fds/screens/cart.dart';
 import 'package:flutter/material.dart';
+
+import 'cart.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -10,6 +11,7 @@ class CartScreen extends StatelessWidget {
         appBar: AppBar(
           title: const Text('Cart Screen'),
         ),
-        body: Column(children: [CartProducts()]));
+        body: SingleChildScrollView(
+            scrollDirection: Axis.vertical, child: CartProducts()));
   }
 }

@@ -16,9 +16,9 @@ class CartProducts extends StatelessWidget {
       body: SizedBox(
         height: 600,
         child: ListView.builder(
-          itemCount: controller.products.lenght,
+          itemCount: controller.products.length,
           itemBuilder: (BuildContext context, int index) {
-            return  CartProductCard(
+            return CartProductCard(
               controller: controller,
               product: controller.products.keys.toList()[index],
               quantity: controller.products.values.toList()[index],
@@ -42,23 +42,19 @@ class CartProductCard extends StatelessWidget {
     required this.product,
     required this.quantity,
     required this.index,
-
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return  Padding(
+    return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 28.0),
       child: Card(
         child: Row(
           children: [
-            GestureDetector(
-              onTap:()
-              child: Image.network(
-                product.imageUrl,
-                width: 100,
-                height: 100,
-              ),
+            Image.network(
+              product.imageUrl,
+              width: 100,
+              height: 100,
             ),
             const SizedBox(width: 10),
             Column(
@@ -85,11 +81,27 @@ class CartProductCard extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                TextButton(
-                  onPressed: () {
-                    controller.removeProduct(product);
-                  },
-                  child: const Text('Remove'),
+                Row(
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                    
+                      },
+                      icon: const Icon(Icons.remove),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                         
+                      },
+                      icon: const Icon(Icons.add),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                  
+                      },
+                      icon: const Icon(Icons.delete),
+                    ),
+                  ],
                 ),
               ],
             ),
