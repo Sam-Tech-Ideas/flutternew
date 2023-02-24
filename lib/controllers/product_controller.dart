@@ -1,14 +1,15 @@
-import 'package:fds/services/firebase_db.dart';
-import 'package:get/get.dart';
 
-import '../models/product_model.dart';
+// import 'package:fds/services/firebase_db.dart';
+// import 'package:get/get.dart';
 
-class ProductController extends GetxController {
-  final products = <Product>[].obs;
+// import '../models/product_model.dart';
 
-  @override
-  void onInit() {
-    products.bindStream(FireStoreDB().getProducts());
-    super.onInit();
-  }
-}
+// class ProductController extends GetxController {
+//   final products = <Product>[].obs;
+
+//   @override
+//   void onInit() {
+//     products.bindStream(FireStoreDB().getProducts());
+//     super.onInit();
+//   }
+// }
