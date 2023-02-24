@@ -1,22 +1,25 @@
-import 'package:fds/models/product_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../controllers/cart_controller.dart';
+import '../controllers/product_controller.dart';
 
 class CatalogProducts extends StatelessWidget {
-  const CatalogProducts({super.key});
+  final productController = Get.put(ProductController());
+  CatalogProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-      child: ListView.builder(
-        itemCount: Product.products.length,
-        itemBuilder: (BuildContext context, int index) {
-          return CatalogProductCard(
-            index: index,
-          );
-        },
+    return Obx(
+      () => Flexible(
+        child: ListView.builder(
+          itemCount: productController.products.length,
+          itemBuilder: (BuildContext context, int index) {
+            return CatalogProductCard(
+              index: index,
+            );
+          },
+        ),
       ),
     );
   }
@@ -24,8 +27,9 @@ class CatalogProducts extends StatelessWidget {
 
 class CatalogProductCard extends StatelessWidget {
   final cartController = Get.put(CartController());
+  final ProductController productController = Get.find();
   final int index;
-   CatalogProductCard({
+  CatalogProductCard({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -43,16 +47,22 @@ class CatalogProductCard extends StatelessWidget {
           CircleAvatar(
             radius: 40,
             backgroundImage: NetworkImage(
-              Product.products[index].imageUrl,
+              productController.products[index].imageURL,
             ),
           ),
           const SizedBox(width: 10),
-          Expanded(child: Text(Product.products[index].name)),
-          Expanded(child: Text(Product.products[index].price.toString())),
+          Expanded(
+            child: Text(productController.products[index].category),
+          ),
+          Expanded(
+              child: Text(productController.products[index].price.toString())),
           IconButton(
               onPressed: () {
-                cartController.addProduct(Product.products[index]);
-              }, icon: const Icon(Icons.add_circle_outline))
+                cartController.addProduct(
+                  productController.products[index],
+                );
+              },
+              icon: const Icon(Icons.add_circle_outline))
         ],
       ),
     );

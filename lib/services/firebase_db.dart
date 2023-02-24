@@ -1,13 +1,16 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
+ import 'package:cloud_firestore/cloud_firestore.dart';
 
-// import '../models/product_model.dart';
+ import '../models/product_model.dart';
 
-// class FireStoreDB {
-//   final Firebase_firebaseFirestore = FirebaseFirestore.instance;
+ class FireStoreDB {
+   final Firebase_firebaseFirestore = FirebaseFirestore.instance;
 
-//   Stream<List<Product>> getProducts() {
-//     return Firebase_firebaseFirestore.collection('products').snapshots().map(
-//         (snapshot) =>
-//             snapshot.docs.map((doc) => Product.fromSnapShot(doc)).toList());
-//   }
-// }
+  Stream<List<Product>> getAllProducts() {
+     return Firebase_firebaseFirestore.collection('products').snapshots().map(
+         (snapshot){
+            return snapshot.docs.map((doc) => Product.fromSnapShot(doc)).toList();
+          
+          }
+      );
+    }
+  }

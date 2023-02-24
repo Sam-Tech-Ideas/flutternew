@@ -54,11 +54,11 @@ class CartProductCard extends StatelessWidget {
           CircleAvatar(
             radius: 40,
             backgroundImage: NetworkImage(
-              product.imageUrl,
+              product.imageURL,
             ),
           ),
           const SizedBox(width: 20),
-          Expanded(child: Text(product.name)),
+          Expanded(child: Text(product.category)),
           Expanded(child: Text(product.price.toString())),
           IconButton(
               onPressed: () {

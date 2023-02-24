@@ -21,7 +21,7 @@ class _MainScreenState extends State<MainScreen> {
       body: SafeArea(
         child: Column(
           children: [
-            const CatalogProducts(),
+            CatalogProducts(),
             ElevatedButton(
               onPressed: () => Get.to(() => const CartScreen()),
               child: const Text('Go to Cart Screen'),
