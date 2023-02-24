@@ -1,5 +1,8 @@
 import 'package:fds/models/product_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controllers/cart_controller.dart';
 
 class CatalogProducts extends StatelessWidget {
   const CatalogProducts({super.key});
@@ -20,8 +23,9 @@ class CatalogProducts extends StatelessWidget {
 }
 
 class CatalogProductCard extends StatelessWidget {
+  final cartController = Get.put(CartController());
   final int index;
-  const CatalogProductCard({
+   CatalogProductCard({
     Key? key,
     required this.index,
   }) : super(key: key);
@@ -46,7 +50,9 @@ class CatalogProductCard extends StatelessWidget {
           Expanded(child: Text(Product.products[index].name)),
           Expanded(child: Text(Product.products[index].price.toString())),
           IconButton(
-              onPressed: () {}, icon: const Icon(Icons.add_circle_outline))
+              onPressed: () {
+                cartController.addProduct(Product.products[index]);
+              }, icon: const Icon(Icons.add_circle_outline))
         ],
       ),
     );
