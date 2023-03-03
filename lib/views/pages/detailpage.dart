@@ -1,39 +1,8 @@
-import 'package:fds/pages/checkout.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+import 'checkout.dart';
 
 
 

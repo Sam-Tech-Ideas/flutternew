@@ -1,9 +1,10 @@
-import 'package:fds/pages/customer.dart';
-import 'package:fds/pages/profile.dart';
-import 'package:fds/pages/seach.dart';
+
 import 'package:flutter/material.dart';
 
 import 'cart.dart';
+import 'customer.dart';
+import 'profile.dart';
+import 'seach.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});

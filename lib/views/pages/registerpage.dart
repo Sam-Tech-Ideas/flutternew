@@ -1,6 +1,7 @@
 import 'package:fds/auth/firebase.dart';
-import 'package:fds/pages/main_page.dart';
 import 'package:flutter/material.dart';
+
+import 'main_page.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
