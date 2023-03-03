@@ -52,7 +52,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "My Account",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   trailing: Icon(
@@ -69,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "My Orders",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   trailing: Icon(
@@ -86,7 +86,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Notifications",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                   trailing: Icon(
@@ -103,7 +103,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       "Dark Mode",
                       style: TextStyle(
                         fontSize: 20,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w400,
                       ),
                     ),
                     trailing: Row(
@@ -113,7 +113,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           "Off",
                           style: TextStyle(
                             fontSize: 20,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                         Switch(
@@ -131,7 +131,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     "Logout",
                     style: TextStyle(
                       fontSize: 20,
-                      fontWeight: FontWeight.bold,
+                      fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
