@@ -1,22 +1,28 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:flutter/widgets.dart';
+import 'package:fds/widgets/catalog_products.dart';
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import 'cart.dart';
 
 class CatalogScreen extends StatelessWidget {
   const CatalogScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-  }
-}
-
-
-class CatalogProductCard extends StatelessWidget {
-  const CatalogProductCard({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Catalog'),
+      ),
+      body: SafeArea(
+        child: Column(
+          children: [
+            const CatalogProducts(),
+            ElevatedButton(
+                onPressed: () => Get.to(() => CartScreen),
+                child: const Text('Cart'))
+          ],
+        ),
+      ),
+    );
   }
 }

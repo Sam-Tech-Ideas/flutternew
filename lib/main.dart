@@ -1,9 +1,8 @@
 import 'package:fds/firebase_options.dart';
+import 'package:fds/views/screens/catalog_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'views/pages/registerpage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,7 +27,7 @@ class _MyAppState extends State<MyApp> {
       theme: ThemeData(
         primarySwatch: Colors.red,
       ),
-      home: const MyHomePage(),
+      home: const CatalogScreen(),
     );
   }
 }
