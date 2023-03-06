@@ -1,8 +1,11 @@
-// import 'package:fds/controllers/cart_controller.dart';
-// import 'package:flutter/material.dart';
+// // import 'package:fds/controllers/cart_controller.dart';
+//  import 'package:flutter/material.dart';
 // import 'package:get/get.dart';
 
-// import '../models/product_model.dart';
+// import '../../controllers/food_controller.dart';
+// // import 'package:get/get.dart';
+
+// // import '../models/product_model.dart';
 
 // class CartProducts extends StatelessWidget {
 //   final CartController controller = Get.find();
@@ -16,7 +19,7 @@
 //       body: SizedBox(
 //         height: 600,
 //         child: ListView.builder(
-//           itemCount: controller.products.length,
+//           itemCount: controller.pkkkroducts.length,
 //           itemBuilder: (BuildContext context, int index) {
 //             return CartProductCard(
 //               controller: controller,
