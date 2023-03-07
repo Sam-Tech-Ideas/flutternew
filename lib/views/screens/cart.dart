@@ -1,7 +1,6 @@
- // import 'package:fds/controllers/cart_controller.dart';
-  import 'package:flutter/material.dart';
- import 'package:get/get.dart';
-
+// import 'package:fds/controllers/cart_controller.dart';
+import 'package:fds/widgets/cart_product.dart';
+import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
@@ -9,7 +8,13 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const CartProducts(),
+      body: SafeArea(
+        child: Column(
+          children: [
+            CartProducts(),
+          ],
+        ),
+      ),
     );
   }
 }

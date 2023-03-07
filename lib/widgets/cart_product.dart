@@ -32,6 +32,7 @@ class CartProductCard extends StatelessWidget {
   final CartController controller;
   final Product product;
   final int index;
+
   final int quantity;
 
   const CartProductCard({
@@ -47,6 +48,10 @@ class CartProductCard extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: Row(
         children: [
+          CircleAvatar(
+            radius: 30,
+            backgroundImage: NetworkImage(product.imageUrl),
+          ),
           Text(product.name),
           Text(product.price.toString()),
           Text(product.vendor),
@@ -64,7 +69,6 @@ class CartProductCard extends StatelessWidget {
             icon: const Icon(Icons.add),
           ),
         ],
-        
       ),
     );
   }
