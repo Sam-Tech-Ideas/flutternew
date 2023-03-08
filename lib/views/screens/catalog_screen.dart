@@ -15,7 +15,7 @@ class CatalogScreen extends StatelessWidget {
       body: SafeArea(
         child: Column(
           children: [
-            const CatalogProducts(),
+            CatalogProducts(),
             Center(
               child: ElevatedButton(
                   onPressed: () => Get.to(() => const CartScreen()),

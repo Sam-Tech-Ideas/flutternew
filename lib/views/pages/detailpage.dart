@@ -1,14 +1,11 @@
-
+import 'package:fds/controllers/cart_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-
-import 'checkout.dart';
-
-
-
+import 'package:get/get.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage(
+  final CartController controller = Get.find();
+  DetailPage(
       {super.key,
       required this.productName,
       required this.productVendor,
@@ -25,7 +22,6 @@ class DetailPage extends StatefulWidget {
 }
 
 class _DetailPageState extends State<DetailPage> {
-  
   @override
   void initState() {
     super.initState();
@@ -331,112 +327,112 @@ class _DetailPageState extends State<DetailPage> {
       ),
       floatingActionButton: InkWell(
         onTap: () {
-          showModalBottomSheet(
-            backgroundColor: Colors.transparent,
-            context: context,
-            builder: (BuildContext context) {
-              return SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(25),
-                        topRight: Radius.circular(25),
-                      ),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.all(16.0),
-                      child: Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.all(8.0),
-                            child: Text(
-                              "Have you got everything?",
-                              style: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                          ListTile(
-                            leading: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(10),
-                                  color: Colors.red,
-                                ),
-                                child: Image.asset("images/am.jpg")),
-                            title: const Text("Chicken"),
-                            subtitle: const Text("GH₵ 10.00"),
-                            trailing: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: const [
-                                Icon(
-                                  Icons.add_circle_outline_rounded,
-                                  color: Colors.red,
-                                  size: 30,
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Text(
-                                  "01",
-                                  style: TextStyle(
-                                    fontSize: 14,
-                                    color: Colors.black,
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 2,
-                                ),
-                                Icon(
-                                  CupertinoIcons.minus_circle,
-                                  color: Colors.red,
-                                  size: 30,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const SizedBox(
-                            height: 10,
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.all(16.0),
-                            child: GestureDetector(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => const CheckoutPage(),
-                                  ),
-                                );
-                              },
-                              child: Container(
-                                height: 50,
-                                margin: const EdgeInsets.only(),
-                                width: double.infinity,
-                                decoration: BoxDecoration(
-                                  color: Colors.red,
-                                  borderRadius: BorderRadius.circular(10),
-                                ),
-                                child: const Center(
-                                  child: Text(
-                                    "Checkout",
-                                    style: TextStyle(
-                                      color: Colors.white,
-                                      fontSize: 18,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )),
-              );
-            },
-          );
+          // showModalBottomSheet(
+          //   backgroundColor: Colors.transparent,
+          //   context: context,
+          //   builder: (BuildContext context) {
+          //     return SingleChildScrollView(
+          //       scrollDirection: Axis.vertical,
+          //       child: Container(
+          //           decoration: const BoxDecoration(
+          //             color: Colors.white,
+          //             borderRadius: BorderRadius.only(
+          //               topLeft: Radius.circular(25),
+          //               topRight: Radius.circular(25),
+          //             ),
+          //           ),
+          //           child: Padding(
+          //             padding: const EdgeInsets.all(16.0),
+          //             child: Column(
+          //               children: [
+          //                 const Padding(
+          //                   padding: EdgeInsets.all(8.0),
+          //                   child: Text(
+          //                     "Have you got everything?",
+          //                     style: TextStyle(
+          //                       fontSize: 18,
+          //                       fontWeight: FontWeight.bold,
+          //                     ),
+          //                   ),
+          //                 ),
+          //                 ListTile(
+          //                   leading: Container(
+          //                       decoration: BoxDecoration(
+          //                         borderRadius: BorderRadius.circular(10),
+          //                         color: Colors.red,
+          //                       ),
+          //                       child: Image.asset("images/am.jpg")),
+          //                   title: const Text("Chicken"),
+          //                   subtitle: const Text("GH₵ 10.00"),
+          //                   trailing: Row(
+          //                     mainAxisSize: MainAxisSize.min,
+          //                     children: const [
+          //                       Icon(
+          //                         Icons.add_circle_outline_rounded,
+          //                         color: Colors.red,
+          //                         size: 30,
+          //                       ),
+          //                       SizedBox(
+          //                         width: 2,
+          //                       ),
+          //                       Text(
+          //                         "01",
+          //                         style: TextStyle(
+          //                           fontSize: 14,
+          //                           color: Colors.black,
+          //                         ),
+          //                       ),
+          //                       SizedBox(
+          //                         width: 2,
+          //                       ),
+          //                       Icon(
+          //                         CupertinoIcons.minus_circle,
+          //                         color: Colors.red,
+          //                         size: 30,
+          //                       ),
+          //                     ],
+          //                   ),
+          //                 ),
+          //                 const SizedBox(
+          //                   height: 10,
+          //                 ),
+          //                 Padding(
+          //                   padding: const EdgeInsets.all(16.0),
+          //                   child: GestureDetector(
+          //                     onTap: () {
+          //                       Navigator.push(
+          //                         context,
+          //                         MaterialPageRoute(
+          //                           builder: (context) => const CheckoutPage(),
+          //                         ),
+          //                       );
+          //                     },
+          //                     child: Container(
+          //                       height: 50,
+          //                       margin: const EdgeInsets.only(),
+          //                       width: double.infinity,
+          //                       decoration: BoxDecoration(
+          //                         color: Colors.red,
+          //                         borderRadius: BorderRadius.circular(10),
+          //                       ),
+          //                       child: const Center(
+          //                         child: Text(
+          //                           "Checkout",
+          //                           style: TextStyle(
+          //                             color: Colors.white,
+          //                             fontSize: 18,
+          //                           ),
+          //                         ),
+          //                       ),
+          //                     ),
+          //                   ),
+          //                 ),
+          //               ],
+          //             ),
+          //           )),
+          //     );
+          //   },
+          // );
         },
         child: Container(
           height: 50,
@@ -448,38 +444,17 @@ class _DetailPageState extends State<DetailPage> {
             color: Colors.red,
             borderRadius: BorderRadius.circular(10),
           ),
-          child: GestureDetector(
-            onTap:  () {
-                // Create a new cart item
-                
-                //cart.addItem(item);
-                // Save cart to local storage
-                //saveCartToLocal(cart);
-              },
-            child: const Center(
-              child: Text(
-                "Add to Cart",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 18,
-                ),
+          child: const Center(
+            child: Text(
+              "Add to Cart",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
               ),
             ),
           ),
         ),
       ),
-      
     );
   }
-
-  int getQuantity() {
-    // get the quantity of items in the cart
-    return 5;
-  }
-
-  double getTotalPrice() {
-    // get the total price of items in the cart
-    return 45.0;
-  }
 }
-

@@ -2,37 +2,30 @@ import 'package:fds/controllers/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../models/food_model.dart';
+import '../controllers/product_controller.dart';
 
 class CatalogProducts extends StatelessWidget {
-  const CatalogProducts({Key? key}) : super(key: key);
+  final productController = Get.put(ProductController());
+  CatalogProducts({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Flexible(
-        child: ListView.builder(
-      itemCount: Product.products.length,
-      itemBuilder: (BuildContext context, int index) {
-        return CatalogProductCard(index: index);
-      },
-    ));
-    // return GetBuilder<ProductController>(
-    //   builder: (controller) {
-    //     return ListView.builder(
-    //       itemCount: controller.products.length,
-    //       itemBuilder: (context, index) {
-    //         return CatalogProductCard(
-    //           product: controller.products[index],
-    //         );
-    //       },
-    //     );
-    //   },
-    // );
+    return Obx(
+      () => Flexible(
+          child: ListView.builder(
+        itemCount: productController.products.length,
+        itemBuilder: (BuildContext context, int index) {
+          return CatalogProductCard(index: index);
+        },
+      )),
+    );
+   
   }
 }
 
 class CatalogProductCard extends StatelessWidget {
   final cartController = Get.put(CartController());
+  final ProductController productController = Get.find();
   final int index;
   CatalogProductCard({Key? key, required this.index}) : super(key: key);
 
@@ -48,19 +41,21 @@ class CatalogProductCard extends StatelessWidget {
         children: [
           CircleAvatar(
             radius: 50,
-            backgroundImage: NetworkImage(Product.products[index].imageUrl),
+            backgroundImage:
+                NetworkImage(productController.products[index].imageUrl),
           ),
           const SizedBox(
             width: 20,
           ),
-          Expanded(child: Text(Product.products[index].name)),
+          Expanded(child: Text(productController.products[index].name)),
           const SizedBox(
             width: 10,
           ),
-          Expanded(child: Text(Product.products[index].price.toString())),
+          Expanded(
+              child: Text(productController.products[index].price.toString())),
           IconButton(
               onPressed: () {
-                cartController.addProduct(Product.products[index]);
+                cartController.addProduct(productController.products[index]);
               },
               icon: const Icon(Icons.add_circle_outline))
         ],

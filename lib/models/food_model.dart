@@ -4,8 +4,7 @@ class Product {
   final String name;
   final String imageUrl;
   final String vendor;
-  final double price;
-  final String description;
+  final int price;
   final String category;
 
   const Product({
@@ -13,43 +12,52 @@ class Product {
     required this.imageUrl,
     required this.vendor,
     required this.price,
-    required this.description,
     required this.category,
   });
 
-  static const List<Product> products = [
-
-   Product(
-     name:  'Burger',
-    vendor: 'McDonalds',
-    price: 5.99,
-    imageUrl: 'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
-    description: 'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
-    category: 'Burgers',
-  ),
-  Product(
-    name: 'Cheeseburger',
-    vendor: 'McDonalds',
-    price: 5.99,
-    imageUrl: 'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
-    description: 'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
-    category: 'Burgers',
-
-   ),
-
-  Product(
-    name: 'Double Cheeseburger',
-    vendor: 'McDonalds',
-    price: 5.99,
-    imageUrl: 'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
-    description: 'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
-    category: 'Burgers',
-  ),
-     
-
-
-
-  ];
+  static Product fromSnapshot(DocumentSnapshot snap) {
+    Product product = Product(
+      name: snap['name'],
+      vendor: snap['vendor'],
+      price: snap['price'],
+      imageUrl: snap['imageURl'],
+      category: snap['category'],
+    );
+    return product;
+  }
+}
+  // static const List<Product> products = [
+  //   Product(
+  //     name: 'Burger',
+  //     vendor: 'McDonalds',
+  //     price: 5.99,
+  //     imageUrl:
+  //         'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
+  //     description:
+  //         'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
+  //     category: 'Burgers',
+  //   ),
+  //   Product(
+  //     name: 'Cheeseburger',
+  //     vendor: 'McDonalds',
+  //     price: 5.99,
+  //     imageUrl:
+  //         'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
+  //     description:
+  //         'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
+  //     category: 'Burgers',
+  //   ),
+  //   Product(
+  //     name: 'Double Cheeseburger',
+  //     vendor: 'McDonalds',
+  //     price: 5.99,
+  //     imageUrl:
+  //         'https://cdn.britannica.com/60/217660-050-DBCC409A/cheddar-cheese-wedge.jpg',
+  //     description:
+  //         'A hamburger with cheese, lettuce, pickles, onions, and special sauce on a sesame seed bun.',
+  //     category: 'Burgers',
+  //   ),
+  // ];
   // static Product fromSnapshot(DocumentSnapshot snap) {
   //   Product product =  Product(
   //     name: snap['name'],
@@ -62,4 +70,4 @@ class Product {
   //   );
   //   return product;
   // }
-}
+

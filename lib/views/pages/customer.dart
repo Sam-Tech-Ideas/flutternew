@@ -140,7 +140,7 @@ class _CustomerPageState extends State<CustomerPage> {
                       ],
                     ),
                   ),
-                  const FoodCard(),
+                  FoodCard(),
                   const SizedBox(
                     height: 20,
                   ),
@@ -166,7 +166,7 @@ class _CustomerPageState extends State<CustomerPage> {
                       ),
                     ),
                   ),
-                  const FoodCard()
+                  FoodCard()
                 ],
               ),
             ),

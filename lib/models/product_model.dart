@@ -1,16 +1,17 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
+import '../controllers/cart_controller.dart';
 import '../views/pages/detailpage.dart';
 
-class FoodCard extends StatefulWidget {
-  const FoodCard({super.key});
+class FoodCard extends StatelessWidget {
+  final cartController = Get.put(CartController());
+  
+   FoodCard({super.key
+    
+   });
 
-  @override
-  State<FoodCard> createState() => _FoodCardState();
-}
-
-class _FoodCardState extends State<FoodCard> {
   @override
   Widget build(BuildContext context) {
     final productSnapshot =

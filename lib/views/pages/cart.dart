@@ -11,7 +11,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
+        backgroundColor: Colors.white,
         appBar: AppBar(
           leading: Padding(
             padding: const EdgeInsets.all(8.0),
@@ -35,13 +35,10 @@ class _CartPageState extends State<CartPage> {
         body: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-
             Image.asset(
-            
               'images/empty.png',
               width: 300,
               height: 200,
-               
             ),
             const Text("Your Cart is Empty",
                 style: TextStyle(
@@ -51,21 +48,19 @@ class _CartPageState extends State<CartPage> {
             const SizedBox(
               height: 20,
             ),
-            Padding(
-              padding: const EdgeInsets.only(
+            const Padding(
+              padding: EdgeInsets.only(
                 right: 4,
                 left: 4,
               ),
-              child: const Center(
-                child: Text("Looks like you haven't added anything to your cart yet",
+              child: Center(
+                child: Text(
+                    "Looks like you haven't added anything to your cart yet",
                     style: TextStyle(
                       fontSize: 10,
-                      
                     )),
               ),
             ),
-            
-            
           ],
         ));
   }
