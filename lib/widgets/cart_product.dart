@@ -6,23 +6,24 @@ import '../models/food_model.dart';
 
 class CartProducts extends StatelessWidget {
   final CartController controller = Get.find();
-
   CartProducts({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 600,
-      child: ListView.builder(
-        itemCount: controller.products.length,
-        itemBuilder: (BuildContext context, int index) {
-          return CartProductCard(
-            controller: controller,
-            product: controller.products.keys.toList()[index],
-            index: index,
-            quantity: controller.products.values.toList()[index],
-          );
-        },
+    return Obx(
+      () => SizedBox(
+        height: 550,
+        child: ListView.builder(
+          itemCount: controller.products.length,
+          itemBuilder: (BuildContext context, int index) {
+            return CartProductCard(
+              controller: controller,
+              product: controller.products.keys.toList()[index],
+              index: index,
+              quantity: controller.products.values.toList()[index],
+            );
+          },
+        ),
       ),
     );
   }
@@ -45,28 +46,42 @@ class CartProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+        vertical: 10,
+      ),
       child: Row(
         children: [
           CircleAvatar(
             radius: 30,
             backgroundImage: NetworkImage(product.imageUrl),
           ),
-          Text(product.name),
-          Text(product.price.toString()),
-          Text(product.vendor),
-          Text(quantity.toString()),
-          IconButton(
-            onPressed: () {
-              controller.removeProduct(product);
-            },
-            icon: const Icon(Icons.remove),
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(
+            child: Text(
+              product.name,
+              style: const TextStyle(
+                fontSize: 14,
+              ),
+            ),
           ),
           IconButton(
-            onPressed: () {
-              controller.addProduct(product);
-            },
-            icon: const Icon(Icons.add),
+              onPressed: () {
+                controller.removeProduct(product);
+              },
+              icon: const Icon(Icons.remove_circle_outline)),
+          IconButton(
+              onPressed: () {
+                controller.addProduct(product);
+              },
+              icon: const Icon(Icons.add_circle_outline)),
+          Text(
+            quantity.toString(),
+            style: const TextStyle(
+              fontSize: 14,
+            ),
           ),
         ],
       ),

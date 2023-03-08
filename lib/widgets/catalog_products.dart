@@ -1,8 +1,7 @@
+import 'package:fds/controllers/cart_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../controllers/cart_controller.dart';
-import '../controllers/product_controller.dart';
 import '../models/food_model.dart';
 
 class CatalogProducts extends StatelessWidget {
@@ -10,56 +9,62 @@ class CatalogProducts extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProductController>(
-      builder: (controller) {
-        return ListView.builder(
-          itemCount: controller.products.length,
-          itemBuilder: (context, index) {
-            return CatalogProductCard(
-              product: controller.products[index],
-            );
-          },
-        );
+    return Flexible(
+        child: ListView.builder(
+      itemCount: Product.products.length,
+      itemBuilder: (BuildContext context, int index) {
+        return CatalogProductCard(index: index);
       },
-    );
+    ));
+    // return GetBuilder<ProductController>(
+    //   builder: (controller) {
+    //     return ListView.builder(
+    //       itemCount: controller.products.length,
+    //       itemBuilder: (context, index) {
+    //         return CatalogProductCard(
+    //           product: controller.products[index],
+    //         );
+    //       },
+    //     );
+    //   },
+    // );
   }
 }
 
 class CatalogProductCard extends StatelessWidget {
-  final cartController = Get.put(CartController);
-  final Product product;
-  CatalogProductCard({Key? key, required this.product}) : super(key: key);
+  final cartController = Get.put(CartController());
+  final int index;
+  CatalogProductCard({Key? key, required this.index}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container();
-    //Padding(
-    //   padding: const EdgeInsets.all(8.0),
-    //   child: Container(
-    //     width: 200,
-    //     height: 240,
-    //     decoration: BoxDecoration(
-    //       color: Colors.white,
-    //       borderRadius: BorderRadius.circular(14),
-    //       boxShadow: [
-    //         BoxShadow(
-    //           color: Colors.grey.withOpacity(0.5),
-    //         ),
-    //       ],
-    //     ),
-    //     child: Column(
-    //       children: [
-    //         Image.network(
-    //           product.imageUrl,
-    //           width: 200,
-    //           height: 200,
-    //         ),
-    //         Text(product.name),
-    //         Text(product.price.toString()),
-    //         Text(product.vendor),
-    //       ],
-    //     ),
-    //   ),
-    // );
+    return Padding(
+      padding: const EdgeInsets.symmetric(
+        horizontal: 20.0,
+        vertical: 10,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          CircleAvatar(
+            radius: 50,
+            backgroundImage: NetworkImage(Product.products[index].imageUrl),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+          Expanded(child: Text(Product.products[index].name)),
+          const SizedBox(
+            width: 10,
+          ),
+          Expanded(child: Text(Product.products[index].price.toString())),
+          IconButton(
+              onPressed: () {
+                cartController.addProduct(Product.products[index]);
+              },
+              icon: const Icon(Icons.add_circle_outline))
+        ],
+      ),
+    );
   }
 }

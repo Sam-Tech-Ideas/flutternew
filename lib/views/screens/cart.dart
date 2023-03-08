@@ -1,5 +1,6 @@
 // import 'package:fds/controllers/cart_controller.dart';
 import 'package:fds/widgets/cart_product.dart';
+import 'package:fds/widgets/cart_total.dart';
 import 'package:flutter/material.dart';
 
 class CartScreen extends StatelessWidget {
@@ -10,9 +11,7 @@ class CartScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Column(
-          children: [
-            CartProducts(),
-          ],
+          children: [CartProducts(), CartTotal()],
         ),
       ),
     );
