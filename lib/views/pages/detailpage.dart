@@ -1,11 +1,9 @@
-import 'package:fds/controllers/cart_controller.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class DetailPage extends StatefulWidget {
-  final CartController controller = Get.find();
-  DetailPage(
+class DetailPage extends StatelessWidget {
+  
+  const DetailPage(
       {super.key,
       required this.productName,
       required this.productVendor,
@@ -16,16 +14,6 @@ class DetailPage extends StatefulWidget {
   final String productVendor;
   final String productImageUrl;
   final int productPrice;
-
-  @override
-  State<DetailPage> createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +32,7 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
         title: Text(
-          widget.productName,
+          productName,
           style: const TextStyle(
             color: Colors.black,
             fontSize: 18,
@@ -77,7 +65,7 @@ class _DetailPageState extends State<DetailPage> {
             ),
             Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
-                widget.productVendor,
+                productVendor,
                 style: const TextStyle(
                   fontSize: 18,
                   color: Colors.black54,
@@ -86,7 +74,7 @@ class _DetailPageState extends State<DetailPage> {
               ),
             ]),
             Image.network(
-              widget.productImageUrl,
+              productImageUrl,
               height: 300,
               width: 400,
             ),
@@ -299,7 +287,7 @@ class _DetailPageState extends State<DetailPage> {
                         Padding(
                           padding: const EdgeInsets.only(left: 8.0),
                           child: Text(
-                            '${widget.productPrice}',
+                            '$productPrice',
                             style: const TextStyle(
                               fontSize: 14,
                               color: Colors.black,

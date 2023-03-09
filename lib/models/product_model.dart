@@ -6,7 +6,7 @@ import '../controllers/cart_controller.dart';
 import '../views/pages/detailpage.dart';
 
 class FoodCard extends StatelessWidget {
-  final cartController = Get.put(CartController());
+  
   
    FoodCard({super.key
     
