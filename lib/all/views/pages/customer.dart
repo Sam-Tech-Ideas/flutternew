@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../models/product_model.dart';
+import '../../models/product_mode.dart';
 
 class CustomerPage extends StatefulWidget {
   const CustomerPage({super.key});
