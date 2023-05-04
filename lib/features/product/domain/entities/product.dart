@@ -10,9 +10,5 @@ class Product {
   final String category;
 
   Product(this.id, this.name, this.description, this.location, this.vendor,
-      this.price, this.deliveryTime, this.campusLocation,
-      
-       this.category  
-      
-      );
+      this.price, this.deliveryTime, this.campusLocation, this.category);
 }
