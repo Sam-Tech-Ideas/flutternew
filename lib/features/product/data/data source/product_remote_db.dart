@@ -1,3 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 import '../../domain/entities/product.dart';
 
 abstract class ProductRemoteDataSource {
@@ -13,7 +17,9 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource{
   @override
   Future<List<Product>> getAllProducts() async{
     // TODO: implement getAllProducts
-    throw UnimplementedError();
+    final productsData = await <FirebaseFirestore.instance.collection('products').get();
+    return productsData,docs.map((e) => Product.fromMap(item.data).toList();
+    )
   }
 
   @override
@@ -22,7 +28,7 @@ class ProductRemoteDataSourceImpl implements ProductRemoteDataSource{
     throw UnimplementedError();
   }
 
-  @override
+  @override 
   Future<List<Product>> getCategorisedProducts() async {
     // TODO: implement getCategorisedProducts
     throw UnimplementedError();
